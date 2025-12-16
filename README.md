@@ -1,4 +1,4 @@
-# 1. Introduction - Why were DevOps technologies invented?
+# 1. Introduction - What are DevOps technologies for?
 
 ## What problem did Docker solve?
 
@@ -17,8 +17,6 @@ Its key benefits are:
 - load balancing
 - high-availability
 
-## What problem do pods solve?
-
 ---
 
 # 2. Containerization Workflow
@@ -33,13 +31,32 @@ A dockerfile is a set of instructions in YAML format, for example:
 - run this command to build the image
 
 The image is the format we use to ship our application to a registry, so that other users or members of our team can then pull that image to 
-create containers that run our application. We call such applications "containerized applications".
+create containers that run our application. We call such applications "containerized applications".  
+
+The most popular image registry is **Docker Hub**.
 
 ---
 
-# 3. Kubernetes Networking
+# 3. 
 
 
+---
+
+# 8. Kubernetes Networking
+
+## How do Pods simplify container networking in Kubernetes? 
+
+Kubernetes assigns each pod a unique IP address, so pods talk to each other directly using normal IPs instead of host-level port mapping.  
+
+All containers in a pod share the same network **namespace** and IP address, so they communicate with each other via `localhost:<port>`.  
+
+The Kubernetes networking model requires that every pod can reach every other pod in the cluster without NAT (network address translation), across all nodes.   
+
+This flat, NAT-free network greatly simplifies connectivity, discovery, and debugging because source IPs are preserved and packets do not traverse complex translation layers.  
+
+## What problem do Kubernetes Services solve?
+
+Because pods are **ephemeral**, so are their IP address, which is why Kubernetes introduced **Services**, so that pods can be reached through stable virtual IPs.
 
 # Why should we use the GitOps approach?
 
