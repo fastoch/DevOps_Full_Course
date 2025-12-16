@@ -1,2 +1,9 @@
-# DevOps_Full_Course
-Gathering knowledge about topics like containers, Kubernetes, GitOps and other DevOps topics
+# What problem did Docker solve?
+
+# What problem did Kubernetes solve?
+
+## What problem do pods solve?
+
+## Kubernetes Networking
+
+# Why should we use the GitOps approach?
