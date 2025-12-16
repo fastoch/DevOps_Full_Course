@@ -58,5 +58,7 @@ This flat, NAT-free network greatly simplifies connectivity, discovery, and debu
 
 Because pods are **ephemeral**, so are their IP address, which is why Kubernetes introduced **Services**, so that pods can be reached through stable virtual IPs.
 
-# Why should we use the GitOps approach?
+---
+
+# 10. Why should we use the GitOps approach?
 
