@@ -59,13 +59,14 @@ Here's what our Dockerfile looks like:
 ```yaml
 FROM node:18-alpine
 WORKDIR /app
+COPY . .
 ```
 
 Let's break down what it does:
 - first, we specify the base image, the OS on which we'll be installing our app
-  - we need a lightweight Linux OS (Alpine)  with Node.js (version 18) pre-installed
-- the next instruction sets /app as the current working directory inside the image and any containers created from it
-- 
+  - we need a lightweight Linux OS (such as Alpine) with Node.js pre-installed (version 18 in our example)
+- the next instruction sets `/app` as the current working directory inside the image, and therefore inside any containers created from it
+- finally, we need to copy all our application files to the container, from the current directory in my local filesystem to the current directory in the container (/app)
 
 ---
 
