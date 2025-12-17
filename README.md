@@ -92,6 +92,15 @@ Once we've written our Dockerfile, the workflow with Docker commands is:
 - `docker pull` for other users to pull our image from the registry
 - `docker run` to start the container and run the application it contains
 
+Writing the Dockerfile for an application is what allows us to then containerize (or "dockerize") that application via a `docker build` command.  
+The containerized version of our application is the image that results of the `docker build` command.
+
+---
+
+# 4. 
+
+
+
 ---
 
 # 8. Kubernetes Networking
