@@ -23,22 +23,46 @@ Its key benefits are:
 
 Write a Dockerfile > Build a Docker image > Push image to registry > Pull image from registry to create containers that run our application.  
 
-A dockerfile is a set of instructions in YAML format, for example:
+A Dockerfile is a set of instructions in YAML format, for example:
 - use this OS as the base image
 - install the following dependencies on that
 - copy these files from my local system to that container
 - create those volumes for data persistence
 - run this command to build the image
 
-The image is the format we use to ship our application to a registry, so that other users or members of our team can then pull that image to 
+A Docker image is the format we use to ship our application to a registry, so that other users or members of our team can then pull that image to 
 create containers that run our application. We call such applications "containerized applications".  
 
 The most popular image registry is **Docker Hub**.
 
 ---
 
-# 3. 
+# 3. Containerizing our first application
 
+- First, cd into the desired directory (create a dedicated one if needed), and pull an already existing app:
+```bash
+cd ~/Documents/DevOps
+mkdir day02_code
+cd day02_code
+git clone https://github.com/docker/getting-started-app.git
+cd getting-started-app
+```
+This will download the specified repository so we can then dockerize this sample application.  
+
+- Then, we need to create and edit our Dockerfile, while still being in our getting-started-app directory:
+```bash
+touch Dockerfile
+vi Dockerfile
+```
+
+Here's what our Dockerfile looks like:
+```yaml
+FROM node:
+```
+
+Let's break down what it does:
+- first, we specify the base image, the OS on which we'll be installing our app
+  - we need a Linux OS with Node.js pre-installed
 
 ---
 
