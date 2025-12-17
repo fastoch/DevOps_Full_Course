@@ -23,7 +23,7 @@ Its key benefits are:
 
 Write a Dockerfile > Build a Docker image > Push image to registry > Pull image from registry to create containers that run our application.  
 
-A Dockerfile is a set of instructions in YAML format, for example:
+A **Dockerfile** is a set of **instructions** in YAML format, for example:
 - use this OS as the base image
 - install the following dependencies on that
 - copy these files from my local system to that container
@@ -57,12 +57,15 @@ vi Dockerfile
 
 Here's what our Dockerfile looks like:
 ```yaml
-FROM node:
+FROM node:18-alpine
+WORKDIR /app
 ```
 
 Let's break down what it does:
 - first, we specify the base image, the OS on which we'll be installing our app
-  - we need a Linux OS with Node.js pre-installed
+  - we need a lightweight Linux OS (Alpine)  with Node.js (version 18) pre-installed
+- the next instruction sets /app as the current working directory inside the image and any containers created from it
+- 
 
 ---
 
