@@ -95,6 +95,10 @@ Once we've written our Dockerfile, the workflow with Docker commands is:
 Writing the Dockerfile for an application is what allows us to then containerize (or "dockerize") that application via a `docker build` command.  
 The containerized version of our application is the image that results of the `docker build` command.
 
+## Exposing our application on a port
+
+To access our app while it's running inside a container, we need to 
+
 ---
 
 # 4. 
