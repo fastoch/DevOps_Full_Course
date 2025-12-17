@@ -58,15 +58,39 @@ vi Dockerfile
 Here's what our Dockerfile looks like:
 ```yaml
 FROM node:18-alpine
+
 WORKDIR /app
+
 COPY . .
+
+RUN yarn install --production
+
+CMD ["node", "src/index.js"]
 ```
 
 Let's break down what it does:
-- first, we specify the base image, the OS on which we'll be installing our app
-  - we need a lightweight Linux OS (such as Alpine) with Node.js pre-installed (version 18 in our example)
-- the next instruction sets `/app` as the current working directory inside the image, and therefore inside any containers created from it
-- finally, we need to copy all our application files to the container, from the current directory in my local filesystem to the current directory in the container (/app)
+- first, we specify the **base image**, the OS on which we'll be installing our app
+  - we need a lightweight Linux OS (such as Alpine) with **Node.js** pre-installed (version 18 in our example)
+- the next instruction sets `/app` as the **working directory** inside the image, and therefore inside any containers created from it
+- then, we COPY all our **application files** to the container, which means:
+  - all the contents of the current directory (host file system) is being copied to the container's current directory (/app)
+- next, we RUN a command that installs only the **production dependencies** 
+  - in this example, the package manager is **yarn**, but there are many other options such as **npm**, **pnpm**, or **Bun**
+- the final CMD instruction specifies the default executable when a container starts from the image
+  - once our app files have been copied and the dependencies installed, we are ready to start the container that will run our app
+  - this last CMD instruction is the one that starts our container, along with the application that will run inside of it
+
+>[!note]
+>it is recommended to leave blank lines between instructions (FROM, WORKDIR, COPY, RUN, CMD) for improving parsing and readability of our Dockerfile.
+
+When we run the `docker build` command, we build the Docker image of our app thanks to the Dockerfile.  
+Then, once the image has been built, we can use it in a `docker run` command to start the container.  
+
+Once we've written our Dockerfile, the workflow with Docker commands is:
+- `docker build` to build the image from this Dockerfile
+- `docker push` to push the image to a registry
+- `docker pull` for other users to pull our image from the registry
+- `docker run` to start the container and run the application it contains
 
 ---
 
