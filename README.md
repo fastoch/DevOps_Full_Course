@@ -138,9 +138,10 @@ wget https://github.com/docker/docker-credential-helpers/releases/download/v0.9.
 - test the binary: `docker-credential-secretservice version`
 - Finally, you can re-run the `docker build` command
 
-Once the Docker image has been built, 
+Once the Docker image has been built, you can see it's been added to your local registry by running `docker images`.  
 
-20min Day2/40
+
+21min Day2/40
 
 ---
 
