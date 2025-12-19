@@ -81,7 +81,7 @@ Let's break down what it does:
   - this last CMD instruction is the one that starts our container, along with the application that will run inside of it
 
 >[!note]
->it is recommended to leave blank lines between instructions (FROM, WORKDIR, COPY, RUN, CMD) for improving parsing and readability of our Dockerfile.
+>it is recommended to leave **blank lines** between instructions (FROM, WORKDIR, COPY, RUN, CMD) for improving parsing and readability of our Dockerfile.
 
 When we run the `docker build` command, we build the Docker image of our app thanks to the Dockerfile.  
 Then, once the image has been built, we can use it in a `docker run` command to start the container.  
@@ -97,7 +97,18 @@ The containerized version of our application is the image that results of the `d
 
 ## Exposing our application on a port
 
-To access our app while it's running inside a container, we need to 
+The execution of `node src/index.js` will render the pages of our web application.  
+In order to access our app while it's running inside a container, we need to expose it on a port.  
+Which is why we need to add the following instruction to our Dockerfile:
+```yaml
+...
+
+CMD ["node", "src/index.js"]
+
+EXPOSE 3000
+```
+
+17min Day2/40
 
 ---
 
