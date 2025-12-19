@@ -49,6 +49,8 @@ cd getting-started-app
 ```
 This will download the specified repository so we can then dockerize this sample application.  
 
+## Creating our first Dockerfile
+
 - Then, we need to create and edit our Dockerfile, while still being in our getting-started-app directory:
 ```bash
 touch Dockerfile
@@ -83,6 +85,8 @@ Let's break down what it does:
 >[!note]
 >it is recommended to leave **blank lines** between instructions (FROM, WORKDIR, COPY, RUN, CMD) for improving parsing and readability of our Dockerfile.
 
+## Explaining the Dockerfile's role
+
 When we run the `docker build` command, we build the Docker image of our app thanks to the Dockerfile.  
 Then, once the image has been built, we can use it in a `docker run` command to start the container.  
 
@@ -93,7 +97,9 @@ Once we've written our Dockerfile, the workflow with Docker commands is:
 - `docker run` to start the container and run the application it contains
 
 Writing the Dockerfile for an application is what allows us to then containerize (or "dockerize") that application via a `docker build` command.  
-The containerized version of our application is the image that results of the `docker build` command.
+The containerized version of our application is the image that results of the `docker build` command.  
+
+But something is missing in our Dockerfile...
 
 ## Exposing our application on a port
 
@@ -107,14 +113,50 @@ CMD ["node", "src/index.js"]
 
 EXPOSE 3000
 ```
+Now we are ready to build the Docker image from our Dockerfile.
 
-17min Day2/40
+## Building our first Docker image
+
+Place yourself in the directory that contains the Dockerfile and the app files, then run:
+```bash
+docker build -t day02-image .
+```
+- The `-t` option is to tag the image, to give it a name
+- The final dot means "use all the files inside the current directory"
+
+>[!important]
+The above command might fail if the `docker-credential-secretservice` binary is missing.  
+In such case, we need to download and install this binary:
+- first, install the `libsecret` library: `sudo dnf install libsecret`
+- check for the latest version of this binary: https://github.com/docker/docker-credential-helpers/releases
+- Then, download them:
+```bash
+wget https://github.com/docker/docker-credential-helpers/releases/download/v0.9.4/docker-credential-pass-v0.9.4.linux-amd64 -O /tmp/docker-credential-secretservice`
+```
+- make it executable: `chmod +x /tmp/docker-credential-secretservice`
+- move it to where it belongs: `sudo mv /tmp/docker-credential-secretservice /usr/local/bin/`
+- test the binary: `docker-credential-secretservice version`
+- Finally, you can re-run the `docker build` command
+
+Once the Docker image has been built, 
+
+20min Day2/40
 
 ---
 
 # 4. 
 
+---
 
+# 5. 
+
+---
+
+# 6. 
+
+---
+
+# 7. 
 
 ---
 
@@ -136,5 +178,13 @@ Because pods are **ephemeral**, so are their IP address, which is why Kubernetes
 
 ---
 
+# 9. 
+
+---
+
 # 10. Why should we use the GitOps approach?
+
+## Using Flux
+
+## Using ArgoCD
 
