@@ -210,7 +210,7 @@ To exit our container, we just have to run `exit`.
 # 5. Multi-stage Docker Build
 
 Multi-stage build is something we use for mutliple reasons:
-- to reduce the image size
+- to reduce build time and the image size
 - to improve the performance of Docker containers
 - to enforce best practices
 
@@ -252,13 +252,23 @@ Let's explain these instructions in details:
 
 ## Leveraging Docker's "layer caching"
 
-Docker builds images in layers, caching unchanged layers to speed up rebuilds.  
-The idea is to not re-run the same task if not necessary, in order to optimize time and image size.  
+Docker images consist of stacked layers, where each instruction (like FROM, RUN, or COPY) generates a new layer on top of the prior ones.
+Docker's layer caching speeds up image builds by reusing unchanged layers from previous builds.  
+
+During `docker build`, Docker scans instructions sequentially:
+- if a layer matches an existing cached version exactly, it reuses it instantly
+- A change in any instruction invalidates that layer and all subsequent ones, forcing rebuilds from that point
+
+>[!tip]
+>Order instructions to place rarely changing steps first, like copying dependency files before the application source code.
 
 ## Why should we use multi-stage for building our Docker images?
 
-Multi-stage builds separate build-time dependencies (Node/npm) from runtime needs (Nginx), reducing image size, improving security, and speeding up deployments. 
+Multi-stage builds separate build-time dependencies (Node/npm) from runtime needs (Nginx), reducing image size, improving security, and speeding up deployments.
 What results of the first stage is not included in the final image.  
+
+Combining Docker's layer caching capability and Multi-stage image building allows us to optimize our image size and to deploy our application faster.  
+
 
 
 9/19
