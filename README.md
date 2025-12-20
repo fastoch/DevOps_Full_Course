@@ -296,11 +296,13 @@ You might need to enter the passphrase you've set up for the GPG key you've used
 
 ## Running a container from our new image
 
-- To run a container from our image: `docker run -it -dp 3000:80 multi-stage:latest`
+- To run a container from our image: `docker run -dp 3000:80 multi-stage:latest`
+- to get the container name: `docker ps`
+- to enter the container: `docker exec -it <container_name> sh`
 - To remove a specific container: `docker rm <container_name>`
 
 
-13/19
+16/19
 Day3/40
 
 ---
