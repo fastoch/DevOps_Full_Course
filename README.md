@@ -122,7 +122,7 @@ Place yourself in the directory that contains the Dockerfile and the app files, 
 docker build -t day02-image .
 ```
 - The `-t` option is to tag the image, to give it a name
-- The final dot means "use all the files inside the current directory"
+- The final dot means "use the Dockerfile inside the current directory"
 
 >[!important]
 The above command might fail if the `docker-credential-secretservice` binary is missing.  
@@ -140,8 +140,42 @@ wget https://github.com/docker/docker-credential-helpers/releases/download/v0.9.
 
 Once the Docker image has been built, you can see it's been added to your local registry by running `docker images`.  
 
+## Pushing the image to an online registry
 
-21min Day2/40
+- go to https://hub.docker.com
+- create an account if needed
+- log in to your DockerHub account
+- create a repository where we'll push our image
+- now we can push our image to the DockerHub repo:
+```bash
+docker tag day02-image:latest fastoch/cka-full-course-day02:latest
+docker login -u fastoch
+docker push fastoch/cka-full-course-day02:latest
+```
+The first line creates a local replica of our image. We can see that by running `docker images`.  
+The second line is to authenticate to my DockerHub account.  
+The last line pushes this replica to our DockerHub registry.  
+
+>[!important]
+You might need to install and initialize `pass`, a program that handles authentication for commands such as `docker login` or `nerdctl login`.
+For more details: https://docs.rancherdesktop.io/getting-started/installation/#pass-setup
+-  once you've installed pass, create a GPG key via `gpg --generate-key`. This will be used by `pass` to secure secrets.
+-  save your passphrase for this GPG key in a password manager (other than pass...)
+-  The output of `gpg --generate-key` will contain your key ID.
+-  You can initialize `pass` by passing this key ID to it: `pass init <GPG_key_ID>`
+-  then, you'll be able to run `docker login` commands to authenticate from the CLI
+
+Once you've verified that your Docker image has been successfully pushed to DockerHub, you can delete the original image:
+```bash
+docker rmi day02-image
+```
+
+And now, our image can be pulled from DockerHub by anyone, given we've published it to a public registry.  
+If we made our registry private, any member of our team with access to this registry can pull our image.  
+
+
+
+26/35 Day2/40
 
 ---
 
