@@ -104,7 +104,7 @@ But something is missing in our Dockerfile...
 ## Exposing our application on a port
 
 The execution of `node src/index.js` will render the pages of our web application.  
-In order to access our app while it's running inside a container, we need to expose it on a port.  
+In order to access our app while it's running inside a container, we need to EXPOSE it on a port.  
 Which is why we need to add the following instruction to our Dockerfile:
 ```yaml
 ...
@@ -173,9 +173,17 @@ docker rmi day02-image
 And now, our image can be pulled from DockerHub by anyone, given we've published it to a public registry.  
 If we made our registry private, any member of our team with access to this registry can pull our image.  
 
+## Running a container from our image
+
+```bash
+docker run -d -p 3000:3000 fastoch/cka-full-course-day02:latest
+```
+- the -d option is for running the container in detached mode, so that we can keep using the same terminal window
+- the -p option is to map one of the host ports to the container's port which our app is exposed at 
+- 
 
 
-26/35 Day2/40
+30/35 Day2/40
 
 ---
 
