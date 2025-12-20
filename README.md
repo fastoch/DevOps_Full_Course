@@ -11,6 +11,7 @@ Containerization made possible to run any application the same way regardless of
 ## What problem did Kubernetes solve?
 
 Kubernetes solves the challenges of managing containerized applications at scale across multiple servers.  
+
 Its key benefits are:
 - scaling (up or down)
 - self-healing
@@ -204,13 +205,64 @@ docker exec -it <container_name> sh
 Once inside the container, we can run `cat /etc/os-release` to show the OS it's running on.  
 To exit our container, we just have to run `exit`.  
 
-
-
-32/35 Day2/40
-
 ---
 
-# 5. 
+# 5. Multi-stage Docker Build
+
+Multi-stage build is something we use for mutliple reasons:
+- to reduce the image size
+- to improve the performance of Docker containers
+- to enforce best practices
+
+Our Dockerfile will now look like this:
+```yaml
+FROM node:18-alpine AS installer
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+FROM nginx:latest AS deployer
+
+COPY --from=installer /app/build /usr/share/nginx/html
+```
+
+## Explaining the new version of our Dockerfile
+
+This multi-stage Dockerfile builds a Node.js app in a first stage, and serves the output via Nginx in a second stage, leveraging Docker's layer caching for faster rebuilds.  
+
+Each instruction creates a cacheable layer, and Docker skips re-execution if inputs match previous builds.  
+
+Let's explain these instructions in details:
+- first line starts a lightweight Node.js base image and names the stage "installer" for later reference
+- second line sets the working directory
+- third line copies only package files first; this layer caches if `package.json/package-lock.json` remain unchanged,
+  enabling `RUN npm install` (next layer) to reuse the "node_modules" folder without reinstalling dependencies
+- fourth line only runs if changes occur in the package files 
+- fifth line copies all source code, invalidating prior caches if files change
+- `RUN npm run build` then compiles to /app/build/, creating the final artifacts
+- the next line begins the "deployer" stage, creating a minimal web server image, and discarding the "installer" stage
+- the final line copies the built static files from stage 1 into Nginx's default directory; no further instructions means Nginx serves on port 80
+
+## Leveraging Docker's "layer caching"
+
+Docker builds images in layers, caching unchanged layers to speed up rebuilds.  
+The idea is to not re-run the same task if not necessary, in order to optimize time and image size.  
+
+## Why should we use multi-stage for building our Docker images?
+
+Multi-stage builds separate build-time dependencies (Node/npm) from runtime needs (Nginx), reducing image size, improving security, and speeding up deployments. 
+What results of the first stage is not included in the final image.  
+
+
+9/19
+Day3/40
 
 ---
 
