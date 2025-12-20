@@ -1,3 +1,7 @@
+# 0. Source material 
+
+https://youtube.com/playlist?list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&si=iOFr4S3hK4OpuPtq
+
 # 1. Introduction - What are DevOps technologies for?
 
 ## What problem did Docker solve?
@@ -214,6 +218,19 @@ Multi-stage build is something we use for mutliple reasons:
 - to improve the performance of Docker containers
 - to enforce best practices
 
+## Cloning the app
+
+Let's create a new directory and clone the application we'll use for this example:
+```bash
+cd ~/Documents/DevOps
+mkdir day03_code
+cd day03_code
+git clone https://github.com/piyushsachdeva/todoapp-docker
+cd todoapp-docker
+touch Dockerfile
+vi Dockerfile
+```
+
 Our Dockerfile will now look like this:
 ```yaml
 FROM node:18-alpine AS installer
@@ -269,9 +286,21 @@ What results of the first stage is not included in the final image.
 
 Combining Docker's layer caching capability and Multi-stage image building allows us to optimize our image size and to deploy our application faster.  
 
+## Rebuilding an image with our new Dockerfile
+
+use the `cd` command to move to the directory that contains the Dockerfile and the Todo app, then run:
+```bash
+docker build -t multi-stage .
+```
+You might need to enter the passphrase you've set up for the GPG key you've used to initialize `pass` (the binary required to use `docker login` or `nerdctl login`).  
+
+## Running a container from our new image
+
+- To run a container from our image: `docker run -it -dp 3000:80 multi-stage:latest`
+- To remove a specific container: `docker rm <container_name>`
 
 
-9/19
+13/19
 Day3/40
 
 ---
