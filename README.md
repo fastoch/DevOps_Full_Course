@@ -178,16 +178,31 @@ If we made our registry private, any member of our team with access to this regi
 ```bash
 docker run -d -p 3000:3000 fastoch/cka-full-course-day02:latest
 ```
-- the -d option is for running the container in detached mode, so that we can keep using the same terminal window
-- the -p option is to map one of the host ports to the container's port which our app is exposed at 
-- 
+- the `-d` option is for running the container in detached mode, so that we can keep using the same terminal window
+- the `-p` option is to map one of the host ports to the container's port which our app is exposed at 
 
+Now, our app can be accessed directly from the host by opening a web browser and going to http://localhost:3000/  
+This is a simple Todo app.  
 
-30/35 Day2/40
+To see our container running: `docker ps`  
+Notice that it's been assigned a random name.  
+If we wanted to give our container a specific name, we should have use the `--name` option.  
+
+And now, the image we've built is available for other users and can be used to run exactly the same app on any computer.  
 
 ---
 
-# 4. 
+# 4. Entering a container
+
+To enter the container we've just created:
+```bash
+docker exec -it <container_name> sh
+```
+- `-it` is for "interactive terminal"
+- `sh` is the shell we'll be using while inside the container
+
+
+32/35 Day2/40
 
 ---
 
