@@ -199,7 +199,11 @@ To enter the container we've just created:
 docker exec -it <container_name> sh
 ```
 - `-it` is for "interactive terminal"
-- `sh` is the shell we'll be using while inside the container
+- `sh` is the shell we'll be using while inside the container, we could use bash depending on the binaries available inside that container.
+
+Once inside the container, we can run `cat /etc/os-release` to show the OS it's running on.  
+To exit our container, we just have to run `exit`.  
+
 
 
 32/35 Day2/40
