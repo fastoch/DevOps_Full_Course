@@ -300,14 +300,16 @@ You might need to enter the passphrase you've set up for the GPG key you've used
 - to get the container name: `docker ps`
 - to enter the container: `docker exec -it <container_name> sh`
 - To remove a specific container: `docker rm <container_name>`
-
-
-16/19
-Day3/40
+- to troubleshoot, we can use commands such as `docker logs` or `docker inspect`
 
 ---
 
-# 6. 
+# 6. Why K8s is used?
+
+
+
+0/8
+Day4/40
 
 ---
 
