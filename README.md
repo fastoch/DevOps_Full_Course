@@ -304,11 +304,27 @@ You might need to enter the passphrase you've set up for the GPG key you've used
 
 ---
 
-# 6. Why K8s is used?
+# 6. Why do we need K8s?
+
+Managing a lot of containers running across multiple machines is too much of a hassle without Kubernetes.  
+Kubernetes handles the following for us:
+- Container Networking
+- Resource Management
+- Security
+- High Availability
+- Fault Tolerance
+- Service Discovery
+- Scalability
+- Load Balancing
+
+Having to allocate human resources to manually take care of the above would be expensive and much less efficient.  
+
+Of course, in many simple use cases, Kubernetes is not needed.  
+But if you're running a complex application which is used by many users across the world, then you don't have a choice.  
 
 
 
-0/8
+6/8
 Day4/40
 
 ---
