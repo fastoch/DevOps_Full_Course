@@ -374,16 +374,31 @@ A combination of many different controllers:
 Also known as `kube-controller-manager`.  
 The Controller manager runs core control loops that regulate the cluster's state by reconciling actual conditions with desired specifications.
 
-### ETCD
+### etcd
 
-A "key: value" data store (NoSQL database).  
-
+A key-value data store (NoSQL database).  
+It stores every single information about the cluster.  
 
 ## Worker node components
 
+Every worker node has a kubelet and a kube-proxy component.
 
+### kubelet
 
-12/25
+Something that receives instructions from the control plane (via the kube-apiserver component).  
+It does what the control plane is asking and sends back a response once done.  
+The apiserver will then register corresponding changes in the etcd database.  
+
+Basically, the kubelet component enables communication between the worker node and the control plane.  
+
+### kube-proxy
+
+This commponent enables networking within the worker node.  
+It allows pods inside the worker node to communicate with each other by creating iptables rules.  
+
+`kube-proxy` translates Service abstractions into actual network rules, enabling communication between Services and their backend Pods without exposing dynamic Pod IPs directly.
+
+16/25
 Day5/40
 
 ---
