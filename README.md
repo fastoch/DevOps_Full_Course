@@ -320,16 +320,54 @@ Kubernetes handles the following for us:
 Having to allocate human resources to manually take care of the above would be expensive and much less efficient.  
 
 Of course, in many simple use cases, Kubernetes is not needed.  
-But if you're running a complex application which is used by many users across the world, then you don't have a choice.  
+For example, **Docker Swarm** suits small-to-medium deployments due to its simplicity and low overhead compared to Kubernetes.  
 
-
-
-6/8
-Day4/40
+But if you're running a complex application which is used by many users across multiple countries, then you don't have a choice.  
 
 ---
 
-# 7. 
+# 7. What is K8s? Kubernetes architecture explained
+
+## Overview
+
+- **Node**: generally a VM, but it can be any computing device
+- **Control Plane**: node that provides instructions to worker nodes
+- **Worker node**: nodes which our containers will run on
+
+## What is a pod?
+
+The Kubernetes pod **abstraction** was invented to group one or more tightly coupled containers into a single, atomic scheduling unit, 
+enabling them to share resources like **network namespace**, **storage** volumes, and **lifecycle** while simplifying orchestration.
+
+- A pod is the **smallest deployable unit** in K8s
+- Pods enable **localhost** communication between the containers they encapsulate
+- Pods are designed to be **ephemeral**
+
+Since each pod has a unique IP address, each container inside of it is assigned a specific port, and containers within a pod can talk via **localhost:<port_number>**.  
+
+If a pod is killed and replaced by a new one, the new pod gets a different IP address, which is why K8s services were invented.   
+A K8s service provides a pod with a stable IP address and a DNS name.  
+
+## Control Plane Components
+
+### API server
+
+Also known as `kube-apiserver`.  
+This is the communication center of your control plane, and therefore the main entry point of your K8s cluster.  
+Any incoming request to the control plane goes through the APIserver component.  
+
+## Scheduler 
+
+Also known as `kube-scheduler`.  
+This component is responsible for finding a suitable node for creating new pods.  
+It ensures optimal placement by evaluating resource availability, constraints, and policies.
+
+## Worker node components
+
+
+
+7/25
+Day5/40
 
 ---
 
