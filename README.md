@@ -353,20 +353,28 @@ A K8s service provides a pod with a stable IP address and a DNS name.
 ### API server
 
 Also known as `kube-apiserver`.  
-This is the communication center of your control plane, and therefore the main entry point of your K8s cluster.  
+This is the **communication center** of your control plane, and therefore the main entry point of your K8s cluster.  
 Any incoming request to the control plane goes through the APIserver component.  
 
-## Scheduler 
+### Scheduler 
 
 Also known as `kube-scheduler`.  
-This component is responsible for finding a suitable node for creating new pods.  
-It ensures optimal placement by evaluating resource availability, constraints, and policies.
+This component is responsible for assigning unscheduled pods to the most suitable node.  
+It ensures optimal pod placement by evaluating resource availability, constraints, and policies.
+
+### Controller manager
+
+A combination of many different controllers:
+- node controller
+- namespace controller
+- deployment controller
+- 
 
 ## Worker node components
 
 
 
-7/25
+8/25
 Day5/40
 
 ---
