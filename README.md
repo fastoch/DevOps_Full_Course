@@ -332,7 +332,7 @@ But if you're running a complex application which is used by many users across m
 
 - **Node**: generally a VM, but it can be any computing device
 - **Control Plane**: node that provides instructions to worker nodes
-- **Worker node**: nodes which our containers will run on
+- **Worker nodes**: nodes which our containers will run on
 
 ## What is a pod?
 
@@ -368,13 +368,22 @@ A combination of many different controllers:
 - node controller
 - namespace controller
 - deployment controller
-- 
+- replication controller
+- ...
+
+Also known as `kube-controller-manager`.  
+The Controller manager runs core control loops that regulate the cluster's state by reconciling actual conditions with desired specifications.
+
+### ETCD
+
+A "key: value" data store (NoSQL database).  
+
 
 ## Worker node components
 
 
 
-8/25
+12/25
 Day5/40
 
 ---
