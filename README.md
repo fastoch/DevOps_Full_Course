@@ -426,6 +426,15 @@ There are different ways you can install Kubernetes on your local machine:
 
 We will use Kind, which stands for **K**ubernetes **in** **D**ocker, a tool for running local Kubernetes clusters using Docker containers as nodes.  
 
+## Installing Kind 
+
+https://kind.sigs.k8s.io/docs/user/quick-start/  
+
+### Installing Kind on my fedora 43 machine
+
+- run `go version` and install the latest version if below 1.16
+- run `docker version` and install docker if not installed yet
+- 
 
 2/27
 video 7/59
