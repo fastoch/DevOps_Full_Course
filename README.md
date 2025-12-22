@@ -428,15 +428,21 @@ We will use Kind, which stands for **K**ubernetes **in** **D**ocker, a tool for 
 
 ## Installing Kind 
 
+**Official instructions**:  
 https://kind.sigs.k8s.io/docs/user/quick-start/  
 
 ### Installing Kind on my fedora 43 machine
 
 - run `go version` and install the latest version if below 1.16
 - run `docker version` and install docker if not installed yet
-- 
+- Download the latest Kind binary from GitHub releases:
+```bash
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
+```
+- make it executable via `chmod +x ./kind`
+- and move it to `/usr/local/bin` via `sudo mv ./kind /usr/local/bin/kind`
 
-2/27
+4/27
 video 7/59
 
 ---
