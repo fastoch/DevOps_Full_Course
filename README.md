@@ -353,6 +353,14 @@ Since each pod has a unique IP address, each container inside of it is assigned 
 If a pod is killed and replaced by a new one, the new pod gets a different IP address, which is why K8s services were invented.   
 A K8s service provides a pod with a stable IP address and a DNS name.  
 
+## What is kubectl?
+
+Developers and Kubernetes admins use `kubectl` for deployment, scaling, troubleshooting, and multi-cluster management via **context switching**.  
+
+`kubectl` is the command-line interface (CLI) tool for interacting with Kubernetes clusters.  
+It communicates with the Kubernetes API server to perform operations like deploying applications, inspecting resources, and managing cluster state.   
+`kubectl` enables CRUD operations (create, read, update, delete) on Kubernetes resources such as pods, deployments, services, and nodes.  
+
 ## Control Plane Components
 
 ### API server
