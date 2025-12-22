@@ -385,7 +385,8 @@ A combination of many different controllers:
 - ...
 
 Also known as `kube-controller-manager`.  
-The Controller manager runs core control loops that regulate the cluster's state by reconciling actual conditions with desired specifications.
+The Controller manager runs core control loops that regulate the cluster's state by reconciling actual conditions with desired specifications.  
+This process is called "**reconciliation**".
 
 ### etcd
 
@@ -413,14 +414,25 @@ It allows pods inside the worker node to communicate with each other by creating
 
 `kube-proxy` translates Service abstractions into actual network rules, enabling communication between Services and their backend Pods without exposing dynamic Pod IPs directly.  
 
+---
+
+# 8. Local Multi Node Cluster Setup
+
+There are different ways you can install Kubernetes on your local machine:
+- Minikube
+- k3s
+- k3d
+- Kind
+
+We will use Kind, which stands for **K**ubernetes **in** **D**ocker, a tool for running local Kubernetes clusters using Docker containers as nodes.  
 
 
-21/25
-Day5/40
+2/27
+video 7/59
 
 ---
 
-# 8. Kubernetes Networking
+# 9. Kubernetes Networking
 
 ## How do Pods simplify container networking in Kubernetes? 
 
@@ -435,10 +447,6 @@ This flat, NAT-free network greatly simplifies connectivity, discovery, and debu
 ## What problem do Kubernetes Services solve?
 
 Because pods are **ephemeral**, so are their IP address, which is why Kubernetes introduced **Services**, so that pods can be reached through stable virtual IPs.
-
----
-
-# 9. 
 
 ---
 
