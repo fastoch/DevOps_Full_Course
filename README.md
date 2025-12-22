@@ -441,8 +441,13 @@ https://kind.sigs.k8s.io/docs/user/quick-start/
 ```
 - make it executable via `chmod +x ./kind`
 - and move it to `/usr/local/bin` via `sudo mv ./kind /usr/local/bin/kind`
+- run `kind version` to confirm installation
 
-4/27
+## Creating our first Kubernetes cluster
+
+
+
+5/27
 video 7/59
 
 ---
