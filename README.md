@@ -178,6 +178,10 @@ docker rmi day02-image
 And now, our image can be pulled from DockerHub by anyone, given we've published it to a public registry.  
 If we made our registry private, any member of our team with access to this registry can pull our image.  
 
+>[!note]
+Nerdctl is a Docker-compatible command-line interface (CLI) for containerd.
+>It provides familiar Docker-like commands while leveraging containerd's runtime for container management.
+
 ## Running a container from our image
 
 ```bash
@@ -292,7 +296,8 @@ use the `cd` command to move to the directory that contains the Dockerfile and t
 ```bash
 docker build -t multi-stage .
 ```
-You might need to enter the passphrase you've set up for the GPG key you've used to initialize `pass` (the binary required to use `docker login` or `nerdctl login`).  
+You might need to enter the passphrase you've set up for the GPG key you've used to initialize `pass`.  
+Reminder: `pass` is the binary required to use `docker login` or `nerdctl login`.  
 
 ## Running a container from our new image
 
@@ -385,18 +390,24 @@ Every worker node has a kubelet and a kube-proxy component.
 
 ### kubelet
 
-Something that receives instructions from the control plane (via the kube-apiserver component).  
-It does what the control plane is asking and sends back a response once done.  
-The apiserver will then register corresponding changes in the etcd database.  
+The kubelet serves as the primary node agent in Kubernetes, running on each worker node to manage containers and ensure the node's desired state matches the cluster's specifications.  
+
+It acts as a bridge between the Kubernetes control plane and the local node, handling pod lifecycle operations.  
+
+It receives instructions from the control plane by actively watching the kube-apiserver.  
+When it detects updates, it does what the control plane is asking and sends back a response once it's done its job.  
+The kube-apiserver component will then register corresponding changes in the etcd database.  
 
 Basically, the kubelet component enables communication between the worker node and the control plane.  
 
 ### kube-proxy
 
 This commponent enables networking within the worker node.  
-It allows pods inside the worker node to communicate with each other by creating iptables rules.  
+It allows pods inside the worker node to communicate with each other by creating iptable rules.  
 
-`kube-proxy` translates Service abstractions into actual network rules, enabling communication between Services and their backend Pods without exposing dynamic Pod IPs directly.
+`kube-proxy` translates Service abstractions into actual network rules, enabling communication between Services and their backend Pods without exposing dynamic Pod IPs directly.  
+
+
 
 16/25
 Day5/40
