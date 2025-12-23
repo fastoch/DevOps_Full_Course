@@ -463,12 +463,12 @@ To create our cluster, we might be prompted for the passphrase we've set up for 
 
 <img width="1547" height="243" alt="image" src="https://github.com/user-attachments/assets/cec789d8-abba-4e13-8fc9-cde2206955cf" />  
 
-Once our cluster is up, we can see the control plane node information via `kubectl get nodes`.  
+Once our cluster is up, we can run `kubectl get nodes` to see all nodes in the current cluster.  
 And to show the default pods created for our brand new clutser: `kubectl get pods -A`  
 
 We can also run `kubectl version` to check if our version of `kubectl` (client) matches our control plane node's version (server).  
 
-11/27
+13/27
 video 7/59
 
 ## K8s Cluster context
