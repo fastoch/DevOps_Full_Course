@@ -445,12 +445,17 @@ https://kind.sigs.k8s.io/docs/user/quick-start/
 
 ## Creating our first Kubernetes cluster
 
-Check the latest version of K8s (or the one recommended for the CKA exam) and adapt the following command accordingly:
+Check the latest version of K8s (or the one recommended for the CKA exam) and adapt the following command:
 ```bash
-kind create cluster --image
+kind create cluster
+\--image kindest/node:v1.34.3@sha256:08497ee19eace7b4b5348db5c6a1591d7752b164530a36f855cb0f2bdcbadd48
+\--name cka-cluster1
 ```
+The releases page is here: https://github.com/kubernetes-sigs/kind/releases  
 
-6/27
+
+
+7/27
 video 7/59
 
 ---
