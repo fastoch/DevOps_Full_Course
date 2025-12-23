@@ -356,6 +356,7 @@ A K8s service provides a pod with a stable IP address and a DNS name.
 ## What is kubectl?
 
 Developers and Kubernetes admins use `kubectl` for deployment, scaling, troubleshooting, and multi-cluster management via **context switching**.  
+More on context switching later on...
 
 `kubectl` is the command-line interface (CLI) tool for interacting with Kubernetes clusters.  
 It communicates with the Kubernetes API server to perform operations like deploying applications, inspecting resources, and managing cluster state.   
@@ -445,18 +446,52 @@ https://kind.sigs.k8s.io/docs/user/quick-start/
 
 ## Creating our first Kubernetes cluster
 
-Check the latest version of K8s (or the one recommended for the CKA exam) and adapt the following command:
+Before creating our first cluster with kind, we need to install `kubectl`.  
+Check the version of `kubectl` currently recommended for preparing the CKA exam.  
+
+To check your `kubectl` version: `kubectl version`  
+Ideally, `kubectl` version should match your Kubernetes version.  
+
+Adapt the following command to match your version of `kubectl`:
 ```bash
-kind create cluster
-\--image kindest/node:v1.34.3@sha256:08497ee19eace7b4b5348db5c6a1591d7752b164530a36f855cb0f2bdcbadd48
-\--name cka-cluster1
+kind create cluster --image kindest/node:v1.34.3@sha256:08497ee19eace7b4b5348db5c6a1591d7752b164530a36f855cb0f2bdcbadd48 --name cka-cluster1
 ```
-The releases page is here: https://github.com/kubernetes-sigs/kind/releases  
+The releases page for kind is here: https://github.com/kubernetes-sigs/kind/releases  
+It will help you find an copy-paste the argument for the `--image` option.  
 
+To create our cluster, we might be prompted for the passphrase we've set up for the GPG key we've used to initialize `pass` (lines 164-171).  
 
+<img width="1547" height="243" alt="image" src="https://github.com/user-attachments/assets/cec789d8-abba-4e13-8fc9-cde2206955cf" />  
 
-7/27
+Once our cluster is up, we can see the control plane node information via `kubectl get nodes`.  
+And to show the default pods created for our brand new clutser: `kubectl get pods -A`  
+
+We can also run `kubectl version` to check if our version of `kubectl` (client) matches our control plane node's version (server).  
+
+11/27
 video 7/59
+
+## K8s Cluster context
+
+If we had multiple clusters running, we can show them via:
+```bash
+kubectl config get-contexts
+```
+
+To show current context:
+```bash
+kubectl config current-context
+```
+
+We can switch between contexts via:
+```bash
+kubectl switch --context <cluster_name>
+```
+
+To switch to a specific Kubernetes context:
+```bash
+kubectl config use-context <context-name>
+```
 
 ---
 
@@ -464,11 +499,10 @@ video 7/59
 
 ## How do Pods simplify container networking in Kubernetes? 
 
-Kubernetes assigns each pod a unique IP address, so pods talk to each other directly using normal IPs instead of host-level port mapping.  
+K8s assigns each pod a unique IP address.  
+All containers in a pod share the same network **namespace** and IP address, each container having its own port.  
 
-All containers in a pod share the same network **namespace** and IP address, so they communicate with each other via `localhost:<port>`.  
-
-The Kubernetes networking model requires that every pod can reach every other pod in the cluster without NAT (network address translation), across all nodes.   
+The K8s networking model requires that every pod can reach every other pod in the cluster without NAT (network address translation), across all nodes.   
 
 This flat, NAT-free network greatly simplifies connectivity, discovery, and debugging because source IPs are preserved and packets do not traverse complex translation layers.  
 
