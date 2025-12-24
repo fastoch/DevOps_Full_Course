@@ -460,14 +460,25 @@ The releases page for kind is here: https://github.com/kubernetes-sigs/kind/rele
 It will help you find an copy-paste the argument for the `--image` option.  
 
 To create our cluster, we might be prompted for the passphrase we've set up for the GPG key we've used to initialize `pass` (lines 164-171).  
+Reminder: `pass` is required to authenticate via `docker login` or `nerdctl login`.  
 
 <img width="1547" height="243" alt="image" src="https://github.com/user-attachments/assets/cec789d8-abba-4e13-8fc9-cde2206955cf" />  
 
 Once our cluster is up, we can run `kubectl get nodes` to see all nodes in the current cluster.  
-And to show the default pods created for our brand new clutser: `kubectl get pods -A`  
+Currently, we only have one node, which is the control plane.  
+
+And to show the default pods created for our new clutser: `kubectl get pods -A`  
 
 We can also run `kubectl version` to check if our version of `kubectl` (client) matches our control plane node's version (server).  
 
+## Creating a multi-node cluster
+
+We are running a single node cluster, a cluster with only one node for the control plane, and zero worker nodes.  
+In a production environment, the control plane and the worker nodes should not be on the same machine (be it a VM or a physical machine).  
+
+Now, we will create a multi-node cluster.  
+
+ 
 13/27
 video 7/59
 
