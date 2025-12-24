@@ -476,7 +476,10 @@ We can also run `kubectl version` to check if our version of `kubectl` (client) 
 We are running a single node cluster, a cluster with only one node for the control plane, and zero worker nodes.  
 In a production environment, the control plane and the worker nodes should not be on the same machine (be it a VM or a physical machine).  
 
-Now, we will create a multi-node cluster.  
+Now, we will create a multi-node cluster, so that our control plane node and worker nodes live on separate locations.  
+Of course, since we're using Kind, different locations means different pods instead of different VMs.  
+
+
 
  
 13/27
