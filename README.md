@@ -541,9 +541,30 @@ kubectl config use-context <context-name>
 
 # 9. Pods & YAML
 
+Kubernetes is all about encapsulating container workloads into pods.  
+Because pods address multiple challenges and offer major benefits:
+- Resource scheduling and utilization
+- Reliability and self-healing
+- Declarative, automated lifecycle management
+- Horizontal scaling and traffic management
+- Consistent environment and portability
+- Zero-downtime updates and rollbacks
+
+## Imperative vs. Declarative
+
+There are 2 ways of deploying pods in Kubernetes:
+- imperative: by running commands such as `kubectl run nginx` to explicitly tell Kubernetes what to do
+- declarative: by writing a YAML (or JSON) config file that describes the desired state and not the steps needed to reach that state
+
+## The imperative way
 
 
-1/33
+
+## The declarative way
+
+
+
+6/33
 video 8/59
 
 ---
