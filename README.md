@@ -473,16 +473,33 @@ We can also run `kubectl version` to check if our version of `kubectl` (client) 
 
 ## Creating a multi-node cluster
 
-We are running a single node cluster, a cluster with only one node for the control plane, and zero worker nodes.  
-In a production environment, the control plane and the worker nodes should not be on the same machine (be it a VM or a physical machine).  
+The cluster we've created is a single node cluster, with only 1 node for the control plane, and 0 worker nodes.  
+We can see it via `kind get clusters`  
 
-Now, we will create a multi-node cluster, so that our control plane node and worker nodes live on separate locations.  
-Of course, since we're using Kind, different locations means different pods instead of different VMs.  
+In a production environment, we would have one (or several) control plane and many worker nodes.  
+And the control plane would live on a different host machine than the worker nodes.  
 
+Now, we will create a multi-node cluster by applying a YAML config file, such as this one:
+```yaml
+# three node (two workers) cluster config
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
+```
+Then, to create the cluster: 
+```bash
+kind create cluster --config my-cluster-config.yaml
+```
 
-
+To delete our single node cluster:
+```bash
+kind delete cluster --name cka-cluster1
+```
  
-13/27
+14/27
 video 7/59
 
 ## K8s Cluster context
@@ -497,14 +514,9 @@ To show current context:
 kubectl config current-context
 ```
 
-We can switch between contexts via:
+In order to interact with a specific cluster, we only need to specify the cluster name as a context:
 ```bash
-kubectl switch --context <cluster_name>
-```
-
-To switch to a specific Kubernetes context:
-```bash
-kubectl config use-context <context-name>
+kubectl cluster-info --context <cluster-name>
 ```
 
 ---
