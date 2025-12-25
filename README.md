@@ -519,13 +519,6 @@ nodes:
 - role: worker
 ```
 
-## How do nodes know they're part of the same cluster?
-
-
-
-17/27
-video 7/59
-
 ## K8s Cluster context
 
 If we had multiple clusters running, we can show them via:
@@ -538,10 +531,13 @@ To show current context:
 kubectl config current-context
 ```
 
-In order to interact with a specific cluster, we only need to specify the cluster name as a context:
+In order to switch to a specific cluster:
 ```bash
-kubectl cluster-info --context <cluster-name>
+kubectl config use-context <context-name>
 ```
+
+24/27
+video 7/59
 
 ---
 
