@@ -490,21 +490,40 @@ nodes:
 - role: worker
 ```
 
-- `cd` into the desired directory and create your config file: `vi my-cluster-config.yaml`  
+- `cd` into the desired directory and create your config file: `vi cluster2-config.yaml`  
 - Copy-paste the above content into it
 - Write and quit
 
 Then, to create the cluster: 
 ```bash
-kind create cluster --config my-cluster-config.yaml
+kind create cluster --image kindest/node:v1.34.3@sha256:08497ee19eace7b4b5348db5c6a1591d7752b164530a36f855cb0f2bdcbadd48 --name cka-cluster2 --config cluster2-config.yaml
 ```
 
 To delete our single node cluster:
 ```bash
 kind delete cluster --name cka-cluster1
 ```
- 
-15/27
+
+We can also have a cluster with multiple control-plane nodes, which is advisable in a production environment.  
+This is what we call "**High-Availability** mode" or "**HA** mode". The YAML file would be as follows:
+```yaml
+# a cluster with 3 control-plane nodes and 3 workers
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: control-plane
+- role: control-plane
+- role: worker
+- role: worker
+- role: worker
+```
+
+## How do nodes know they're part of the same cluster?
+
+
+
+17/27
 video 7/59
 
 ## K8s Cluster context
