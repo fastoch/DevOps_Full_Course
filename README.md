@@ -490,8 +490,8 @@ nodes:
 - role: worker
 ```
 
-- Create this file where you want to: `vi my-cluster-config.yaml`  
-- Copy-paste the above content into it.
+- `cd` into the desired directory and create your config file: `vi my-cluster-config.yaml`  
+- Copy-paste the above content into it
 - Write and quit
 
 Then, to create the cluster: 
@@ -504,7 +504,7 @@ To delete our single node cluster:
 kind delete cluster --name cka-cluster1
 ```
  
-14/27
+15/27
 video 7/59
 
 ## K8s Cluster context
