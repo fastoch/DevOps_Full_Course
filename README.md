@@ -1,6 +1,9 @@
 # 0. Source material 
 
-https://youtube.com/playlist?list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&si=iOFr4S3hK4OpuPtq
+- https://youtube.com/playlist?list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&si=iOFr4S3hK4OpuPtq
+- https://kind.sigs.k8s.io/docs/user/quick-start/
+- https://kubernetes.io/docs/home/
+- https://kubernetes.io/blog/
 
 # 1. Introduction - What are DevOps technologies for?
 
@@ -417,7 +420,7 @@ It allows pods inside the worker node to communicate with each other by creating
 
 ---
 
-# 8. Local Multi Node Cluster Setup
+# 8. Local Multi-Node Cluster Setup
 
 There are different ways you can install Kubernetes on your local machine:
 - Minikube
@@ -536,12 +539,16 @@ In order to switch to a specific cluster:
 kubectl config use-context <context-name>
 ```
 
-24/27
-video 7/59
+# 9. Pods & YAML
+
+
+
+1/33
+video 8/59
 
 ---
 
-# 9. Kubernetes Networking
+# 15. Kubernetes Networking
 
 ## How do Pods simplify container networking in Kubernetes? 
 
@@ -558,7 +565,7 @@ Because pods are **ephemeral**, so are their IP address, which is why Kubernetes
 
 ---
 
-# 10. Why should we use the GitOps approach?
+# 16. Why should we use the GitOps approach?
 
 ## Using Flux
 
