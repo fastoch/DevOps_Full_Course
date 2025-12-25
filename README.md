@@ -489,6 +489,11 @@ nodes:
 - role: worker
 - role: worker
 ```
+
+- Create this file where you want to: `vi my-cluster-config.yaml`  
+- Copy-paste the above content into it.
+- Write and quit
+
 Then, to create the cluster: 
 ```bash
 kind create cluster --config my-cluster-config.yaml
