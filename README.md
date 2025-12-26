@@ -579,12 +579,23 @@ Our YAML file will contain the following:
 # this is a sample pod config file
 
 apiVersion: v1
-kind:
-metadata:
+kind: Pod
+metadata: 
+  name: nginx-pod
+  labels:
+    env: demo
+    type: frontend
 spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80
 ```
+To check the apiVersion, run `kubectl explain pod | head`  
 
-15/33
+
+18/33
 video 8/59
 
 ---
