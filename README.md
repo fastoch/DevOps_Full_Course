@@ -539,7 +539,7 @@ In order to switch to a specific cluster:
 kubectl config use-context <context-name>
 ```
 
-# 9. Pods & YAML
+# 9. K8s Pods & YAML config file
 
 Kubernetes is all about encapsulating container workloads into pods.  
 Because pods address multiple challenges and offer major benefits:
@@ -558,7 +558,10 @@ There are 2 ways of deploying pods in Kubernetes:
 
 ## The imperative way
 
-
+Let's create an Nginx pod from the terminal:
+```bash
+kubectl run nginx-pod --image=nginx:latest
+```
 
 ## The declarative way
 
