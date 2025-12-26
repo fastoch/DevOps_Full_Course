@@ -567,6 +567,7 @@ Now, we can see our pod running via `kubectl get pods`
 
 ## The declarative way
 
+Let's create a directory and an example config file:
 ```bash
 cd ~/Documents/DevOps
 mkdir day07_code
@@ -576,12 +577,12 @@ vi day07.yml
 
 Our YAML file will contain the following:
 ```yaml
-# this is a sample pod config file
+# this is an example pod config file
 
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: nginx-pod
+  name: nginx-pod2
   labels:
     env: demo
     type: frontend
@@ -594,8 +595,10 @@ spec:
 ```
 To check the apiVersion, run `kubectl explain pod | head`  
 
+Now, we can create our pod via `kubectl apply -f day07.yml`  
 
-18/33
+
+19/33
 video 8/59
 
 ---
