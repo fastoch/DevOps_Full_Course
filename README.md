@@ -563,11 +563,24 @@ Let's create an Nginx pod from the terminal:
 kubectl run nginx-pod --image=nginx:latest
 ```
 
+Now, we can see our pod running via `kubectl get pods`
+
 ## The declarative way
 
+```bash
+cd ~/Documents/DevOps
+mkdir day07_code
+cd day07_code
+vi day07.yml
+```
 
+Our YAML file will contain the following:
+```yaml
+# this is a comment
 
-7/33
+```
+
+10/33
 video 8/59
 
 ---
