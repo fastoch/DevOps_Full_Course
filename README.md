@@ -596,9 +596,35 @@ spec:
 To check the apiVersion, run `kubectl explain pod | head`  
 
 Now, we can create our pod via `kubectl apply -f day07.yml`  
+And we can see it getting created then running via `kubectl get pods`  
+To delete the pod: `kubectl delete pod nginx-pod2`  
 
+## Troubleshooting commands
 
-19/33
+- to show details about a specific pod: `kubectl describe pod <pod_name>`  
+- to edit (via Vim) a pod's config while it's running: `kubectl edit pod <pod_name>`
+- to open an interactive shell inside the default container of a pod: `kubectl exec -it <pod_name> -- sh`
+- to do the same inside a specific container of the pod: `kubectl exec -it <pod_name> -c <container_name> -- sh`
+- to exit out of the container and come back to the host machine: `exit` (or maybe `ctrl + D`)
+
+>[!note]
+>The `--` separates the kubectl arguments from the command you want to run inside the container; anything after `--` is executed inside the pod’s container.
+
+## Creating a complex YAML file
+
+To write a more complex YAML file, we can type an imperative command and output its result to a YAML file:
+```bash
+<kubectl_complex_command> -o yaml > example-pod-config.yaml
+```
+or
+```bash
+<kubectl_complex_command> -o json > example-pod-config.json
+```
+
+>[!important]
+>You need to be proficient with Vim (the text editor), and not only for the CKA exam!
+
+28/33
 video 8/59
 
 ---
