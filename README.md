@@ -567,7 +567,7 @@ kubectl run nginx-pod --image=nginx:latest
 
 
 
-6/33
+7/33
 video 8/59
 
 ---
