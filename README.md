@@ -576,18 +576,15 @@ vi day07.yml
 
 Our YAML file will contain the following:
 ```yaml
-# this is a comment
+# this is a sample pod config file
 
-employee-list:
-  - name: piyush
-    age: 34
-    address: Sesame street
-  - name: fastoch
-    age: 43
-    address: Peaceful street
+apiVersion: v1
+kind:
+metadata:
+spec:
 ```
 
-13/33
+15/33
 video 8/59
 
 ---
