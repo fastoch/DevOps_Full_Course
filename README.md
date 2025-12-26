@@ -578,9 +578,16 @@ Our YAML file will contain the following:
 ```yaml
 # this is a comment
 
+employee-list:
+  - name: piyush
+    age: 34
+    address: Sesame street
+  - name: fastoch
+    age: 43
+    address: Peaceful street
 ```
 
-10/33
+13/33
 video 8/59
 
 ---
