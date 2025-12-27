@@ -604,6 +604,7 @@ To delete the pod: `kubectl delete pod nginx-pod2`
 
 - to show all details about a specific pod: `kubectl describe pod <pod_name>`
 - to know which node a pod is running on: `kubectl get pods -o wide`
+- the same command can be used with nodes: `kubectl get nodes -o wide`
 - to edit (via **Vim**) a pod's config while it's running: `kubectl edit pod <pod_name>`
 - to open an interactive shell inside the default container of a pod: `kubectl exec -it <pod_name> -- sh`
 - to do the same inside a specific container of the pod: `kubectl exec -it <pod_name> -c <container_name> -- sh`
@@ -636,12 +637,16 @@ or
 <kubectl_command> -o json > example-pod-config.json
 ```
 
-30/33
-video 8/59
-
 ---
 
-# 10. 
+# 10. Deployments, Replication Controller and ReplicaSet explained
+
+## Self-healing
+
+
+
+4/35
+video 9/59
 
 ---
 
