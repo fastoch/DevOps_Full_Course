@@ -610,6 +610,12 @@ To delete the pod: `kubectl delete pod nginx-pod2`
 >[!note]
 >The `--` separates the kubectl arguments from the command you want to run inside the container; anything after `--` is executed inside the pod’s container.
 
+>[!important]
+>You need to be proficient with Vim (the text editor), and not only for the CKA exam!
+
+Here's my personal "Vim Motions" tutorial:  
+https://github.com/fastoch/Vim-Motions/blob/main/README.md
+
 ## Creating a complex YAML file
 
 To write a more complex YAML file, we can type an imperative command and output its result to a YAML file:
@@ -621,8 +627,6 @@ or
 <kubectl_complex_command> -o json > example-pod-config.json
 ```
 
->[!important]
->You need to be proficient with Vim (the text editor), and not only for the CKA exam!
 
 28/33
 video 8/59
