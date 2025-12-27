@@ -641,6 +641,10 @@ video 8/59
 
 ---
 
+# 10. 
+
+---
+
 # 15. Kubernetes Networking
 
 ## How do Pods simplify container networking in Kubernetes? 
