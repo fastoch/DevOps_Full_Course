@@ -541,8 +541,9 @@ kubectl config use-context <context-name>
 
 # 9. K8s Pods & YAML config file
 
-Kubernetes is all about encapsulating container workloads into pods.  
-Because pods address multiple challenges and offer major benefits:
+Kubernetes is all about encapsulating container workloads into Pods.  
+
+Because Pods address multiple challenges and offer major benefits:
 - Resource scheduling and utilization
 - Reliability and self-healing
 - Declarative, automated lifecycle management
@@ -599,10 +600,11 @@ Now, we can create our pod via `kubectl apply -f day07.yml`
 And we can see it getting created then running via `kubectl get pods`  
 To delete the pod: `kubectl delete pod nginx-pod2`  
 
-## Troubleshooting commands
+## Useful Pod Commands
 
-- to show details about a specific pod: `kubectl describe pod <pod_name>`  
-- to edit (via Vim) a pod's config while it's running: `kubectl edit pod <pod_name>`
+- to show all details about a specific pod: `kubectl describe pod <pod_name>`
+- to know which node a pod is running on: `kubectl get pods -o wide`
+- to edit (via **Vim**) a pod's config while it's running: `kubectl edit pod <pod_name>`
 - to open an interactive shell inside the default container of a pod: `kubectl exec -it <pod_name> -- sh`
 - to do the same inside a specific container of the pod: `kubectl exec -it <pod_name> -c <container_name> -- sh`
 - to exit out of the container and come back to the host machine: `exit` (or maybe `ctrl + D`)
@@ -611,24 +613,30 @@ To delete the pod: `kubectl delete pod nginx-pod2`
 >The `--` separates the kubectl arguments from the command you want to run inside the container; anything after `--` is executed inside the pod’s container.
 
 >[!important]
->You need to be proficient with Vim (the text editor), and not only for the CKA exam!
+>You need to be proficient with **Vim** (the text editor), and not only for the CKA exam!
 
 Here's my personal "Vim Motions" tutorial:  
 https://github.com/fastoch/Vim-Motions/blob/main/README.md
 
-## Creating a complex YAML file
+## Pod Labels
 
-To write a more complex YAML file, we can type an imperative command and output its result to a YAML file:
+Labels on a pod are key-value pairs used to identify and group pods for management and operations.  
+They enable selecting and organizing pods by criteria such as environment, app, version, etc., which is **essential** for applying policies, routing traffic, and scaling.  
+
+- to show labels of a specific pod: `kubectl get pods <pod_name> --show-labels`
+
+## From imperative to declarative
+
+To write a YAML file, we can type an imperative command and output its result to a YAML file:
 ```bash
-<kubectl_complex_command> -o yaml > example-pod-config.yaml
+<kubectl_command> -o yaml > example-pod-config.yaml
 ```
 or
 ```bash
-<kubectl_complex_command> -o json > example-pod-config.json
+<kubectl_command> -o json > example-pod-config.json
 ```
 
-
-28/33
+30/33
 video 8/59
 
 ---
