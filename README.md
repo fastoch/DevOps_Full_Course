@@ -639,13 +639,20 @@ or
 
 ---
 
-# 10. Deployments, Replication Controller and ReplicaSet explained
+# 10. K8s Deployment, Replication Controller and ReplicaSet explained
 
-## Self-healing
+## Self-healing & High-Availability
+
+A ReplicaSet = multiple identical instances of a pod  
+
+When a pod crashes, the Replication Controller detects it and immediately creates a new pod to replace it.  
+The Replication Controller is responsible for routing the traffic to one of the active pods, which implies load balancing functionality.  
+
+High-Availability (HA) is crucial to ensure your application never crashes.  
+In High-Availability configurations, you already have replicas (replacement pods) ready to be deployed as soon as needed.  
 
 
-
-4/35
+7/35
 video 9/59
 
 ---
