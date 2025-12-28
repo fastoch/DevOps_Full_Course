@@ -643,16 +643,24 @@ or
 
 ## Self-healing & High-Availability
 
-A ReplicaSet = multiple identical instances of a pod  
+A **ReplicaSet** = multiple identical instances of a pod  
 
-When a pod crashes, the Replication Controller detects it and immediately creates a new pod to replace it.  
-The Replication Controller is responsible for routing the traffic to one of the active pods, which implies load balancing functionality.  
+When a pod crashes, the **Replication Controller** detects it and immediately creates a new pod to replace it.  
+The Replication Controller is also responsible for **routing** the incoming **traffic** to one of the active pods, which implies **load balancing** functionality.  
 
-High-Availability (HA) is crucial to ensure your application never crashes.  
-In High-Availability configurations, you already have replicas (replacement pods) ready to be deployed as soon as needed.  
+**High-Availability** (**HA**) is crucial to ensure your application never crashes.  
+If we set the number of replicas for a given pod to 4, the replication controller will make sure we always have 4 healthy replicas running.  
+
+And if the user traffic increases to the point where the set number of replicas is not enough to handle it, we can increment our number of pod replicas on-the-fly.
+This is called **horizontal pod autoscaling** (**HPA**).  
+Scaling deployments (up or down) can also be done manually .  
+
+And if traffic increases to the point where a particular node is out of resources and cannot create any additional pods.  
+We can then ask K8s to spin up a new node (a new VM), because yes, the same replication controller can span multiple nodes.  
 
 
-7/35
+
+10/35
 video 9/59
 
 ---
